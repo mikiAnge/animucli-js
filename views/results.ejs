@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados de Búsqueda</title>
+</head>
+<body>
+  <h1>Resultados de Búsqueda</h1>
+  <% if (titles.length > 0) { %>
+    <form action="/episodes" method="post">
+      <% titles.forEach((title, index) => { %>
+        <div>
+          <input type="radio" id="title_<%= index %>" name="selectedTitle" value="<%= title %>" required>
+          <label for="title_<%= index %>">
+            <img src="<%= images[index] %>" alt="<%= title %>" style="width: 100px; height: auto;">
+            <%= title %>
+          </label>
+        </div>
+      <% }) %>
+      <input type="hidden" name="source" value="<%= source %>">
+      <button type="submit">Ver Episodios</button>
+    </form>
+  <% } else { %>
+    <p>No se encontraron resultados.</p>
+  <% } %>
+  <a href="/">Volver</a>
+</body>
+</html>

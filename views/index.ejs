@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar Anime</title>
+</head>
+<body>
+  <h1>Buscar Anime</h1>
+  <form action="/search" method="post">
+    <input type="text" name="query" placeholder="Introduce el nombre del anime" required>
+    <select name="source" required>
+      <option value="monoschinos">MonosChinos</option>
+      <option value="latanime">LatAnime</option>
+    </select>
+    <button type="submit">Buscar</button>
+  </form>
+</body>
+</html>

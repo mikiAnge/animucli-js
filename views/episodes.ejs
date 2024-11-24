@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Episodios de <%= title %></title>
+</head>
+<body>
+  <h1>Episodios de <%= title %></h1>
+  <% if (episodes.length > 0) { %>
+    <form action="/play" method="post">
+      <input type="hidden" name="source" value="<%= source %>">
+      <input type="hidden" name="selectedTitle" value="<%= title %>">
+      <label for="episodeNumber">Selecciona el número de episodio:</label>
+      <select name="episodeNumber">
+        <% episodes.forEach((episode, index) => { %>
+          <option value="<%= episode.mal_id %>">Episodio <%= episode.mal_id %>: <%= episode.title %></option>
+        <% }) %>
+      </select>
+      <br><br>
+      <input type="radio" id="browser" name="playOption" value="browser" checked>
+      <label for="browser">Reproducir en el navegador</label><br>
+      <input type="radio" id="mpv" name="playOption" value="mpv">
+      <label for="mpv">Reproducir con mpv</label><br><br>
+      <button type="submit">Reproducir Episodio</button>
+    </form>
+  <% } else { %>
+    <p>No se encontraron episodios.</p>
+  <% } %>
+  <a href="/">Volver</a>
+</body>
+</html>
